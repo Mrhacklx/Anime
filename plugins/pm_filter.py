@@ -1254,7 +1254,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             )
             fileName = {quote_plus(get_name(log_msg))}
             lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
-            lazy_download = f"{URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
+            lazy_download = f"https://ziyamovie.blogspot.com/search?q={URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
 
             xo = await query.message.reply_text(f'🔐')
             await asyncio.sleep(1)
@@ -1265,14 +1265,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 quote=True,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup([[      # we download Link
-                                                    InlineKeyboardButton('🥰 𝗪𝗮𝘁𝗰𝗵 ᵒʳ 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱 𝐍𝐨𝐰 🔰', url=lazy_stream)]])  # web stream Link
+                                                    InlineKeyboardButton('🥰 𝗪𝗮𝘁𝗰𝗵 ᵒʳ 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱 𝐍𝐨𝐰 🔰', url=lazy_download)]])  # web stream Link
             )
             await query.message.reply_text(
-                text=f"𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !\n\n📕Nᴀᴍᴇ ➠ : {fileName} \n\n📥 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱: {lazy_stream} \n\n👀𝗪𝗮𝘁𝗰𝗵: {lazy_stream} \n\n🚸 Nᴏᴛᴇ : LINK WON'T EXPIRE\nTILL I DELETE",
+                text=f"𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !\n\n📕Nᴀᴍᴇ ➠ : {fileName} \n\n📥 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱: {lazy_download} \n\n👀𝗪𝗮𝘁𝗰𝗵: {lazy_download} \n\n🚸 Nᴏᴛᴇ : LINK WON'T EXPIRE\nTILL I DELETE",
                 quote=True,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup([[ # we download Link
-                                                    InlineKeyboardButton('🥰 𝗪𝗮𝘁𝗰𝗵 ᵒʳ 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱 𝐍𝐨𝐰 🔰', url=lazy_stream)]])  # web stream Link
+                                                    InlineKeyboardButton('🥰 𝗪𝗮𝘁𝗰𝗵 ᵒʳ 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱 𝐍𝐨𝐰 🔰', url=lazy_download)]])  # web stream Link
             )
         except Exception as e:
             print(e)  # print the error message
