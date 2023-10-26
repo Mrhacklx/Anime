@@ -394,11 +394,25 @@ async def start(client, message):
                     ]
                 )
             )
+            file_id = lazyData.split(":")
+       
+            user_id = query.from_user.id
+            username =  query.from_user.mention 
+
+            log_msg = await client.send_cached_media(
+                chat_id=LOG_CHANNEL,
+                file_id=file_id,
+            )
+            fileName = {quote_plus(get_name(log_msg))}
+            lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
+            lazy_download = f"https://ziyamovie.blogspot.com/{URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
+            
             filetype = msg.media
             file = getattr(msg, filetype.value)
             title = '@Ziyamovie ' + ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), file.file_name.split()))
             size=get_size(file.file_size)
-            f_caption = f"<code>{title}</code>"
+            f_caption = f"<code>{title}</code>\n\n 𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !\n\n📕Nᴀᴍᴇ ➠ : {fileName} \n\n📥 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱: {lazy_download} \n\n👀𝗪𝗮𝘁𝗰𝗵: {lazy_download}"
+            
             if CUSTOM_FILE_CAPTION:
                 try:
                     f_caption=CUSTOM_FILE_CAPTION.format(file_name= '' if title is None else title, file_size='' if size is None else size, file_caption='')
@@ -415,7 +429,20 @@ async def start(client, message):
             return
         except:
             pass
-        return await message.reply('No such file exist.')
+        return await message.reply('No such file exist')
+    file_id = lazyData.split(":")
+       
+            user_id = query.from_user.id
+            username =  query.from_user.mention 
+
+            log_msg = await client.send_cached_media(
+                chat_id=LOG_CHANNEL,
+                file_id=file_id,
+            )
+            fileName = {quote_plus(get_name(log_msg))}
+            lazy_stream = f"{URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
+            lazy_download = f"https://ziyamovie.blogspot.com/{URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
+            
     files = files_[0]
     title = '@ziyamovie  ' + ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files.file_name.split()))
     size=get_size(files.file_size)
@@ -427,7 +454,7 @@ async def start(client, message):
             logger.exception(e)
             f_caption=f_caption
     if f_caption is None:
-        f_caption = f"@ziyamovie  {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files.file_name.split()))}"
+        f_caption = f"@ziyamovie  {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@'), files.file_name.split()))} \n\n 𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !\n\n📕Nᴀᴍᴇ ➠ : {fileName} \n\n📥 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱: {lazy_download} \n\n👀𝗪𝗮𝘁𝗰𝗵: {lazy_download}"
     if not await check_verification(client, message.from_user.id) and VERIFY == True:
         btn = [[
             InlineKeyboardButton("Verify", url=await get_token(client, message.from_user.id, f"https://telegram.me/{temp.U_NAME}?start="))
